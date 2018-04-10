@@ -1,0 +1,12 @@
+
+.gradle
+.idea
+*.class
+*/out/
+.iml
+*.out
+/order-app/build/libs/*.jar
+*.original
+*.jar
+*.MF
+

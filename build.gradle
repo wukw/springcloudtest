@@ -1,0 +1,81 @@
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url 'https://repo.spring.io/libs-milestone'}
+
+    }
+    dependencies {
+        //classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+    }
+}
+
+
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    group = 'com.wukw.spring2.0'
+    version = 'spring2.0test'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        maven { url 'https://repo.spring.io/libs-milestone' }
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+
+
+    }
+
+
+    ext {
+        //spring cloud版本
+        springCloudVersion = 'Edgware.SR3'
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka
+        compile('org.springframework.boot:spring-boot-starter-actuator')
+        compile('org.springframework.boot:spring-boot-starter-web')
+        runtime('org.springframework.boot:spring-boot-devtools')
+
+    }
+
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+//        imports {
+//            mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M8'
+//        }
+
+
+    }
+
+    buildscript{
+        dependencies{
+
+        }
+    }
+}
+
