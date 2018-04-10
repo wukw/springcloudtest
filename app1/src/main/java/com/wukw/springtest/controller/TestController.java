@@ -18,7 +18,7 @@ public class TestController {
 
     @HystrixCommand(fallbackMethod = "follback")
     @GetMapping("testhys")
-    public String test () throws InterruptedException {
+    public String testhys () throws InterruptedException {
         return storeIntegration.getStores(null);
     }
     @HystrixCommand(fallbackMethod = "follback")

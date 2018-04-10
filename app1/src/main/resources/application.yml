@@ -14,3 +14,4 @@ management:
       enabled: true
     auditevents:
       enabled: true
+

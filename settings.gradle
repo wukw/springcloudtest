@@ -1,4 +1,5 @@
 rootProject.name = 'spring2.0test'
 include 'eureka'
 include 'app1'
+include 'turbine'
 
